@@ -17,6 +17,7 @@ export class SideBarComponent implements OnInit {
   isSidebarOpen: boolean = false;
   devices: any[] = [];
   locations: any[] = [];
+  deviceName : any[] = [];
   deviceService = inject(DeviceService);
 
   toggleSidebar() {
@@ -24,7 +25,7 @@ export class SideBarComponent implements OnInit {
   }
   ngOnInit(): void {
     this.fetchDevices();
-    
+
   }
   fetchDevices() {
     // Make a GET request to fetch devices from the backend API
@@ -37,15 +38,39 @@ export class SideBarComponent implements OnInit {
       }
     });
   }
-  handleSidebarItemClick(id: string){
-    this.deviceService.getSingleDeviceService(id).subscribe({
-      next: (res) => {
-        this.locations = res.locations;
-        // console.log(res.locations);
-      },
-      error: (err) => {
-        console.log(err);
-      }
-    })
+  handleSidebarItemClick(id: string) {
+    if (id === 'All') {
+      let allCurrlocations: any[] = [];
+      this.deviceService.getSingleDeviceService(id).subscribe({
+        next: (res) => {
+          // console.log(res);
+          for (let i = 0; i < res.length; i++) {
+            console.log(res[i].locations[res[i].locations.length - 1]);
+
+            res[i].locations[res[i].locations.length - 1]["name"] = res[i].name;
+            
+            allCurrlocations.push(res[i].locations[res[i].locations.length - 1]);
+          }
+          console.log(allCurrlocations);
+          
+          this.locations = allCurrlocations;
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+
+    } else {
+      this.deviceService.getSingleDeviceService(id).subscribe({
+        next: (res) => {
+          this.locations = res.locations;
+          // console.log(res.locations);
+        },
+        error: (err) => {
+          console.log(err);
+        }
+      })
+    }
+
   }
 }

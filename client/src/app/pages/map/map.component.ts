@@ -45,13 +45,18 @@ export class MapComponent implements OnInit{
       // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
       this.locations.forEach(location => {
-        const { latitude, longitude, datetime } = location;
+        const { latitude, longitude, datetime, name } = location;
         const marks = [latitude, longitude];
-        console.log(datetime);
+        // console.log(datetime);
         
+        if(name){
+          var marker = L.marker(marks).addTo(this.map);
+        marker.bindPopup(`<b> ${name}</b>`).openPopup();
+        }else{
+          var marker = L.marker(marks).addTo(this.map);
+          marker.bindPopup(`<b>Date: ${datetime}</b>`).openPopup();
+        }
         
-        var marker = L.marker(marks).addTo(this.map);
-        marker.bindPopup(`<b>Date: ${datetime}</b>`).openPopup();
         this.markers.push(marker);
       });
     }

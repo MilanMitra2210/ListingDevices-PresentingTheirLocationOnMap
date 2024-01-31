@@ -62,6 +62,17 @@ const getDeviceController = async (
     const deviceId = req.params.deviceId;
 
     // Find the device by ID
+    if(deviceId === 'All'){
+      const devices: any[] = await DeviceModel.find({});
+
+      const devicesInfo: { name: string; locations: any[] }[] = devices.map((device) => ({
+        name: device.name, // Assuming MongoDB's default ObjectId is used for IDs
+        locations: device.locations,
+      }));
+
+      return res.status(200).json(devicesInfo);
+    }
+
     const device = await DeviceModel.findOne({ deviceId });
 
     if (!device) {
