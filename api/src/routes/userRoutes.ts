@@ -8,7 +8,7 @@ const userRouter: Router = express.Router();
 userRouter.get('/', verifyAdmin, getAllUsersController);
 
 //get by id
-userRouter.get('/:id',verifyUser, getByIdController);
+userRouter.get('/:id', verifyUser, getByIdController);
 
 
 export default userRouter;

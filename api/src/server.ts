@@ -9,6 +9,7 @@ import swaggerUi from 'swagger-ui-express';
 import roleRouter from './routes/roleRoute';
 import userRouter from './routes/userRoutes';
 import cookieParser from 'cookie-parser';
+import deviceRouter from './routes/deviceRoute';
 
 // configure env
 dotenv.config();
@@ -57,6 +58,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 app.use('/api/v1/role', roleRouter);
 app.use('/api/v1/auth', authRouter);
 app.use('/api/v1/user', userRouter);
+app.use('/api/v1/device', deviceRouter);
 
 //custom error or sucess
 app.use((obj: any, req: Request, res: Response, next: NextFunction) => {
