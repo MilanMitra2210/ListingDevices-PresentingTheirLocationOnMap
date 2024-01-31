@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+declare const L: any;
 
 @Component({
   selector: 'app-side-bar',
@@ -8,9 +10,12 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.scss'
 })
 export class SideBarComponent {
+
   isSidebarOpen: boolean = false;
 
   toggleSidebar() {
     this.isSidebarOpen = !this.isSidebarOpen;
   }
+
+  
 }
