@@ -12,31 +12,18 @@
     <div class="h-full lg:px-3 py-4 overflow-y-auto bg-gray-50 dark:bg-gray-800">
         <ul class="font-medium ">
             <li>
-                <a href="#"
-                    class="flex items-center text-center lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ">
+                <a (click)="handleSidebarItemClick('All')"
+                    class="flex items-center text-center cursor-pointer lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group ">
                     <span class="flex-1  whitespace-nowrap lg:ms-3 text-sm lg:text-lg">All</span>
                 </a>
             </li>
-            <li>
-                <a href="#" class="flex items-center text-center lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">   
-                   <span class="flex-1  whitespace-nowrap lg:ms-3 text-sm lg:text-lg">Device 1</span>
+            <li *ngFor="let device of devices">
+                <a (click)="handleSidebarItemClick(device.id)" class="flex items-center text-center cursor-pointer lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                  <span class="flex-1 whitespace-nowrap lg:ms-3 text-sm lg:text-lg">{{ device.name }}</span>
                 </a>
-             </li>
-            <li>
-                <a href="#" class="flex items-center text-center lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">   
-                   <span class="flex-1  whitespace-nowrap lg:ms-3 text-sm lg:text-lg">Device 1</span>
-                </a>
-             </li>
-            <li>
-                <a href="#" class="flex items-center text-center lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">   
-                   <span class="flex-1  whitespace-nowrap lg:ms-3 text-sm lg:text-lg">Device 1</span>
-                </a>
-             </li>
-            <li>
-                <a href="#" class="flex items-center text-center lg:p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">   
-                   <span class="flex-1  whitespace-nowrap lg:ms-3 text-sm lg:text-lg">Device 1</span>
-                </a>
-             </li>
+              </li>
+            
         </ul>
     </div>
 </aside>
+<app-map [locations]="locations"></app-map>

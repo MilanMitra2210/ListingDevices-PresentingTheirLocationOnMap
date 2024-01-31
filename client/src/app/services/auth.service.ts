@@ -11,6 +11,7 @@ export class AuthService {
   http = inject(HttpClient);
   private loggedIn = new BehaviorSubject<boolean>(false);
 
+  //auth services
   registerService(registerObj: any) {
     return this.http.post<any>(`${apiUrls.authServiceApi}register`, registerObj);
   }
@@ -48,4 +49,6 @@ export class AuthService {
       return null;
     }
   }
+
+  
 }
