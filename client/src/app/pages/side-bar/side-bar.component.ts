@@ -8,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrl: './side-bar.component.scss'
 })
 export class SideBarComponent {
+  isSidebarOpen: boolean = false;
 
+  toggleSidebar() {
+    this.isSidebarOpen = !this.isSidebarOpen;
+  }
 }
