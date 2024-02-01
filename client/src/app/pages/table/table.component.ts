@@ -15,7 +15,7 @@ export default class TableComponent {
   gridData !: any;
 
   deviceService = inject(DeviceService);
-
+  
   ngOnInit(): void {
     // console.log("hi");
     
@@ -23,7 +23,8 @@ export default class TableComponent {
       this.deviceService.getAllDataService().subscribe({
         next: (res) => {
           this.gridData = res;
-          // console.log(this.gridData);
+          
+          console.log("grid data",this.gridData);
           
         },
         error: (err) => {
@@ -32,4 +33,5 @@ export default class TableComponent {
       });
     }
   }
+
 }

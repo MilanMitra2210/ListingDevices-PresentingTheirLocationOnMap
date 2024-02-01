@@ -1,10 +1,11 @@
 <kendo-grid [data]="gridData">
     <kendo-grid-column field="deviceId" title="Device ID"></kendo-grid-column>
     <kendo-grid-column field="name" title="Device Name"></kendo-grid-column>
+
     <kendo-grid-column field="locations" title="Locations">
         <ng-template kendoGridCellTemplate let-dataItem>
             <ul>
-                <li *ngFor="let location of dataItem.locations">
+                <li *ngFor="let location of dataItem.locations.slice(0, 5)"> <!-- Limiting to 5 locations -->
                     <div style="margin-left: 10px; font-weight: bold;">Datetime: {{ location.datetime | date: 'MMM d, y, h:mm:ss a'}}</div>
                     <div style="margin-left: 10px;"> Latitude: {{ location.latitude }}
                         Longitude: {{ location.longitude }}</div>
@@ -13,3 +14,6 @@
         </ng-template>
     </kendo-grid-column>
 </kendo-grid>
+
+
+
