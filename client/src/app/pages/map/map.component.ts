@@ -9,7 +9,7 @@ declare const L: any;
   templateUrl: './map.component.html',
   styleUrl: './map.component.scss'
 })
-export class MapComponent implements OnInit{
+export class MapComponent implements OnInit {
 
   @Input() locations: any[] = [];
   map!: any;
@@ -17,7 +17,7 @@ export class MapComponent implements OnInit{
 
   ngOnInit(): void {
     const latLong = [30.715260, 76.707771];
-    
+
     if (typeof L !== 'undefined') {
       this.map = L.map('map').setView(latLong, 13);
 
@@ -26,13 +26,12 @@ export class MapComponent implements OnInit{
         attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
       }).addTo(this.map);
 
-      // var marker = L.marker(latLong).addTo(this.map);
-      // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
     }
   }
 
   ngOnChanges(): void {
-    
+
     const latLong = [30.715260, 76.707771];
     if (typeof L !== 'undefined') {
 
@@ -41,22 +40,21 @@ export class MapComponent implements OnInit{
       });
       this.markers = [];
 
-      // var marker = L.marker(latLong).addTo(map);
-      // marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
+
 
       this.locations.forEach(location => {
         const { latitude, longitude, datetime, name } = location;
         const marks = [latitude, longitude];
         // console.log(datetime);
-        
-        if(name){
+
+        if (name) {
           var marker = L.marker(marks).addTo(this.map);
-        marker.bindPopup(`<b> ${name}</b>`).openPopup();
-        }else{
+          marker.bindPopup(`<b> ${name}</b>`).openPopup();
+        } else {
           var marker = L.marker(marks).addTo(this.map);
           marker.bindPopup(`<b>Date: ${datetime}</b>`).openPopup();
         }
-        
+
         this.markers.push(marker);
       });
     }

@@ -9,13 +9,15 @@ import { DeviceService } from '../../services/device.service';
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export default class TableComponent implements OnInit{
-  
-  
+export default class TableComponent implements OnInit {
+
+
 
   deviceServide = inject(DeviceService);
 
   ngOnInit(): void {
     this.deviceServide.getSingleDeviceService("All").subscribe();
+    console.log("Testing ");
+
   }
 }
