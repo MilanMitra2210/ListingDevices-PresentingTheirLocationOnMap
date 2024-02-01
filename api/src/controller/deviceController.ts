@@ -108,5 +108,22 @@ const getAllDeviceController = async (
     });
   }
 }
+const getAllDataController = async (
+  req: Request,
+  res: Response
+): Promise<any> => {
+  try {
+    // Fetch all documents from the collection
+    const devices: any[] = await DeviceModel.find({});
 
-export { addDeviceController, getDeviceController, addDeviceLocationController, getAllDeviceController };
+    res.status(200).json(devices);
+  } catch (error) {
+    res.status(500).send({
+      success: false,
+      message: "Error in Fetching data",
+      error,
+    });
+  }
+}
+
+export { addDeviceController, getDeviceController, addDeviceLocationController, getAllDeviceController, getAllDataController };

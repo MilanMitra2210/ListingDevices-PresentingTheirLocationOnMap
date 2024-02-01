@@ -14,4 +14,8 @@ export class DeviceService {
   getSingleDeviceService(deviceId: string) {
     return this.http.get<any>(`${apiUrls.deviceServiceApi}`+ deviceId);
   }
+
+  getAllDataService() {
+    return this.http.get<any>(`${apiUrls.deviceServiceApi}get-all-data`);
+  }
 }

@@ -1,5 +1,5 @@
 import express from 'express';
-import { addDeviceController, addDeviceLocationController, getAllDeviceController, getDeviceController } from '../controller/deviceController';
+import { addDeviceController, addDeviceLocationController, getAllDeviceController, getDeviceController, getAllDataController } from '../controller/deviceController';
 
 const deviceRouter = express.Router();
 
@@ -11,6 +11,9 @@ deviceRouter.post('/:deviceId/add-locations', addDeviceLocationController);
 
 // Endpoint to retrieve all devices
 deviceRouter.get('/getalldevices', getAllDeviceController);
+
+// Endpoint to retrieve all devices
+deviceRouter.get('/get-all-data', getAllDataController);
 
 // Endpoint to retrieve device data
 deviceRouter.get('/:deviceId', getDeviceController);
